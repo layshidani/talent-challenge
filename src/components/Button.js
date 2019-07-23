@@ -1,6 +1,8 @@
 import React from 'react';
 
-function Button(props) {
+function Button(props) 
+
+{
     const { onClick, text } = props;
 
     const buttonStyle = {
