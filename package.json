@@ -9,6 +9,7 @@
     "bootstrap": "^4.3.1",
     "firebase": "^6.3.1",
     "firebase-tools": "^7.1.1",
+    "gtech-cpf-validator": "^1.0.3",
     "npm": "^6.10.1",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
