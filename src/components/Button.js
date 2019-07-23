@@ -4,11 +4,9 @@ function Button(props) {
     const { onClick, text } = props;
 
     const buttonStyle = {
-      width: '250px',
       fontSize: '30px',
       textTransform: 'uppercase',
-      padding: '20px',
-      backgroundColor: '#000000',
+      backgroundColor: '#00B7B2',
       color: '#F1F1F1',
       border: 'none',
       borderRadius: '10px'
