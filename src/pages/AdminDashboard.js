@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../components/Button';
 import Navbar from '../components/Navbar';
+import Card from '../components/Card';
 
 class AdminDashboard extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class AdminDashboard extends React.Component {
         <h1>#AdminDashboard</h1>
         <Button text='teste' />
         <Navbar/>
+        <Card/>
       </section>
     )
   }
