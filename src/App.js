@@ -19,10 +19,10 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <Route exact path="/" component={CPFValidation}/>
-          <Route exact path="/customerData" component={CustomerData}/>
+          <Route exact path="/customer-data" component={CustomerData}/>
           <Route exact path="/confirmation" component={Confirmation}/>
           <Route exact path="/login" component={Login}/>
-          <Route exact path="/adminDashboard" component={AdminDashboard}/>
+          <Route exact path="/admin-dashboard" component={AdminDashboard}/>
         </header>
       </div>
     </Router>
