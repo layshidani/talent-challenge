@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
 
 class AdminDashboard extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class AdminDashboard extends React.Component {
     return (
       <section>
         <h1>#AdminDashboard</h1>
+        <Navbar/>  
       </section>
     )
   }
