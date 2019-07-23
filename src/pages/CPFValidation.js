@@ -1,7 +1,9 @@
 import React from 'react';
-// import Input from '../components/Input'
-// import Button from '../components/Button'
+import Input from '../components/Input'
+import Button from '../components/Button'
 // import '.css'
+
+const isValid = require('gtech-cpf-validator');
 
 class CPFValidation extends React.Component {
   constructor(props) {
@@ -10,6 +12,7 @@ class CPFValidation extends React.Component {
       cpf: ''
     };
   }
+  
 
   handleChange = (event, element) => {
     const newState = this.state;
@@ -17,13 +20,26 @@ class CPFValidation extends React.Component {
     this.setState(newState);
   }
 
+  validateCpf = (cpfString) => {
+    const valid = { 
+      cpf1 : isValid.cpfValidator(cpfString)
+    } 
+    if(valid.cpf1) {
+      sessionStorage.setItem('cpf', cpfString);
+    } else {
+      alert('CPF inválido')
+    }    
+  }
+  
   render() {
+  const cpfStored = sessionStorage.getItem('cpf');
+    console.log(cpfStored)
     return (
       <section>
-        <input value={this.state.cpf}
+        <Input value={this.state.cpf}
           placeholder='Digite o número do seu CPF'
           onChange={(e) => this.handleChange(e, 'cpf')} />
-        {/* <Button text='Verificar' className="btn" onClick={this.validateCpf} /> */}
+        <Button text='Verificar' className="btn" onClick={() => this.validateCpf(this.state.cpf)} />
       </section>
     )
   }
