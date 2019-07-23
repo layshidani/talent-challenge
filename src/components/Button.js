@@ -1,16 +1,13 @@
 import React from 'react';
 
-function Button(props) 
-
-{
+function Button(props) {
     const { onClick, text } = props;
 
     const buttonStyle = {
-      width: '250px',
-      fontSize: '30px',
-      textTransform: 'uppercase',
+      width: '120px',
+      fontSize: '20px',
       padding: '20px',
-      backgroundColor: '#000000',
+      backgroundColor: '#0071A3',
       color: '#F1F1F1',
       border: 'none',
       borderRadius: '10px'
