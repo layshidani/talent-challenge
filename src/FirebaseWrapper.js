@@ -1,4 +1,4 @@
-import firebase from '../firebase-config';
+import firebase from './firebase-config';
 
 class FirebaseAuthWrapper {
   constructor() {
@@ -31,17 +31,17 @@ class FirebaseFirestoreWrapper {
     this.firestore = firebase.firestore();
   }
 
-  async createCustomer(obj, id) {
-    await this.firestore.doc(`customer/${id}`).set({
-      name: name,
-      email: email,
-      phone: phone,
-      cpf: cpf,
-      status: status,
-      photoURL: '../images/avatar.png',
-      createdAt: new Date()
-    });
-  }
+  // async createCustomer(obj, id) {
+  //   await this.firestore.doc(`customer/${id}`).set({
+  //     name: name,
+  //     email: email,
+  //     phone: phone,
+  //     cpf: cpf,
+  //     status: status,
+  //     photoURL: '../images/avatar.png',
+  //     createdAt: new Date()
+  //   });
+  // }
 
 }
 class FirebaseWrapper {
