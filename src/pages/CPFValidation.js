@@ -9,7 +9,8 @@ class CPFValidation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cpf: ''
+      cpf: '',
+      errorMsg: ''
     };
   }
   
@@ -26,8 +27,10 @@ class CPFValidation extends React.Component {
     } 
     if(valid.cpf1) {
       sessionStorage.setItem('cpf', cpfString);
+      this.setState({errorMsg: ''})
+      this.props.history.push(`/customer-data`)
     } else {
-      alert('CPF inválido')
+      this.setState({errorMsg: 'CPF inválido'})
     }    
   }
   
@@ -36,6 +39,7 @@ class CPFValidation extends React.Component {
     console.log(cpfStored)
     return (
       <section>
+        <p>{this.state.errorMsg}</p>
         <Input value={this.state.cpf}
           placeholder='Digite o número do seu CPF'
           onChange={(e) => this.handleChange(e, 'cpf')} />

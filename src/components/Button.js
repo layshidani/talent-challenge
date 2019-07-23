@@ -17,9 +17,7 @@ function Button(props) {
     const disabledStyle = { ...buttonStyle, backgroundColor: '#ccc' }
 
     return (
-        props.disabled ?
-        <button style={disabledStyle} onClick={onClick} disabled='disabled'>{text}</button> :
-        <button style={buttonStyle} onClick={onClick}>{text}</button>
+        <button type='button' style={buttonStyle} onClick={onClick}>{text}</button>
     )
   }
 
