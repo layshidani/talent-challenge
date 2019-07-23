@@ -17,10 +17,10 @@ class FirebaseAuthWrapper {
     firebase
       .auth()
       .signOut()
-      .then(function() {
+      .then(function () {
         sessionStorage.clear();
         window.location = '/admin-dashboard';
-      }, function(error) {
+      }, function (error) {
         console.error(error);
       });
   }
@@ -29,6 +29,22 @@ class FirebaseAuthWrapper {
 class FirebaseFirestoreWrapper {
   constructor() {
     this.firestore = firebase.firestore()
+  }
+
+  // async createUser(name, email, phone) {
+  //   return await this.firestore.doc(`customers`).set({
+  //     name,
+  //     email, 
+  //     phone
+  //   });
+  // }
+
+  async createUser(name, email, phone) {
+    await this.firestore.doc(`customers`).set({
+      name,
+      email,
+      phone
+    });
   }
 
   // async createUser(userID, role, email, name) {
