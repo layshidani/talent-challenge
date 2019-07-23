@@ -8,7 +8,6 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "firebase": "^6.3.1",
     "firebase-tools": "^7.1.1",
-    "i": "^0.3.6",
     "npm": "^6.10.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
