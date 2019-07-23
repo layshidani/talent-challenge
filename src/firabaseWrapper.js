@@ -31,8 +31,8 @@ class FirebaseFirestoreWrapper {
     this.firestore = firebase.firestore();
   }
 
-  async createUser(obj, id) {
-    await this.firestore.doc(`orders/${id}`).set({
+  async createCustomer(obj, id) {
+    await this.firestore.doc(`customer/${id}`).set({
       name: name,
       email: email,
       phone: phone,
