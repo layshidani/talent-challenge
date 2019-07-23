@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../components/Button';
+import Navbar from '../components/Navbar';
 
 class AdminDashboard extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class AdminDashboard extends React.Component {
       <section>
         <h1>#AdminDashboard</h1>
         <Button text='teste' />
+        <Navbar/>
       </section>
     )
   }

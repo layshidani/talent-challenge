@@ -1,6 +1,8 @@
 import React from 'react';
 
-function Button(props) {
+function Button(props) 
+
+{
     const { onClick, text } = props;
 
     const buttonStyle = {
@@ -17,10 +19,10 @@ function Button(props) {
     const disabledStyle = { ...buttonStyle, backgroundColor: '#ccc' }
 
     return (
-        props.disabled ?
-        <button style={disabledStyle} onClick={onClick} disabled='disabled'>{text}</button> :
-        <button style={buttonStyle} onClick={onClick}>{text}</button>
-    )
+      props.disabled ?
+      <button style={disabledStyle} onClick={onClick} disabled='disabled'>{text}</button> :
+      <button style={buttonStyle} onClick={onClick}>{text}</button>
+      )
   }
 
   export default Button;
