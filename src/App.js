@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import CPFValidation from './pages/CPFValidation'
+import CustomerData from './pages/CustomerData'
+import Confirmation from './pages/Confirmation'
+import Login from './pages/Login'
+import AdminDashboard from './pages/AdminDashboard'
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <Router>
+      <div className="App">
+        <header className="App-header">
+          <Route exact path="/" component={CPFValidation}/>
+          <Route exact path="/CustomerData" component={CustomerData}/>
+          <Route exact path="/Confirmation" component={Confirmation}/>
+          <Route exact path="/Login" component={Login}/>
+          <Route exact path="/AdminDashboard" component={AdminDashboard}/>
+        </header>
+      </div>
+    </Router>
+    );
+  }
 }
 
 export default App;
