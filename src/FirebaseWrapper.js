@@ -19,7 +19,7 @@ class FirebaseAuthWrapper {
       .signOut()
       .then(function() {
         sessionStorage.clear();
-        window.location = '/';
+        window.location = '/admin-dashboard';
       }, function(error) {
         console.error(error);
       });
@@ -28,22 +28,27 @@ class FirebaseAuthWrapper {
 
 class FirebaseFirestoreWrapper {
   constructor() {
-    this.firestore = firebase.firestore();
+    this.firestore = firebase.firestore()
   }
 
-  // async createCustomer(obj, id) {
-  //   await this.firestore.doc(`customer/${id}`).set({
-  //     name: name,
+  // async createUser(userID, role, email, name) {
+  //   return await this.firestore.doc(`users/${userID}`).set({
   //     email: email,
-  //     phone: phone,
-  //     cpf: cpf,
-  //     status: status,
+  //     displayName: name,
   //     photoURL: '../images/avatar.png',
-  //     createdAt: new Date()
+  //     createdAt: new Date(),
+  //     role: role
   //   });
   // }
 
+  // async getUserById(id) {
+  //   const doc = await this.firestore.collection('users').doc(id).get();
+  //   const user = doc.data();
+  //   user['id'] = id;
+  //   return user;
+  // }
 }
+
 class FirebaseWrapper {
   constructor() {
     this.auth = new FirebaseAuthWrapper();

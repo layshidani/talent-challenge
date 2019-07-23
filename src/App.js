@@ -16,13 +16,13 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-      <div className="App">
-        <header className="App-header">
-          <Route exact path="/" component={CPFValidation}/>
-          <Route exact path="/customer-data" component={CustomerData}/>
-          <Route exact path="/confirmation" component={Confirmation}/>
-          <Route exact path="/login" component={Login}/>
-          <Route exact path="/admin-dashboard" component={AdminDashboard}/>
+      <div className='App'>
+        <header className='App-header'>
+          <Route exact path='/' component={CPFValidation}/>
+          <Route exact path='/customer-data' component={CustomerData}/>
+          <Route exact path='/confirmation' component={Confirmation}/>
+          <Route exact path='/login' component={Login}/>
+          <Route exact path='/admin-dashboard' component={AdminDashboard}/>
         </header>
       </div>
     </Router>
