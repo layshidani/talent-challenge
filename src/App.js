@@ -1,5 +1,5 @@
 import React from 'react';
-// import './App.css';
+import './App.css';
 import CPFValidation from './pages/CPFValidation'
 import CustomerData from './pages/CustomerData'
 import Confirmation from './pages/Confirmation'
