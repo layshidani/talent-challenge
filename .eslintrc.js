@@ -4,13 +4,17 @@ module.exports = {
       'es6': true,
       'node': true
     },
-    'extends': 'eslint:recommended',
+    'extends': [
+      'eslint:recommended',
+      'plugin:react/recommended'
+    ],
     'globals': {
       'Atomics': 'readonly',
       'SharedArrayBuffer': 'readonly'
     },
     'parserOptions': {
-      'ecmaVersion': 2018
+      'ecmaVersion': 2018,
+      'sourceType': 'module'
     },
     'rules': {
       'indent': [
@@ -19,7 +23,7 @@ module.exports = {
       ],
       'linebreak-style': [
         'error',
-        'windows'
+        'unix'
       ],
       'quotes': [
         'error',

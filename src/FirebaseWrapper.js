@@ -17,10 +17,10 @@ class FirebaseAuthWrapper {
     firebase
       .auth()
       .signOut()
-      .then(function() {
+      .then(function () {
         sessionStorage.clear();
         window.location = '/admin-dashboard';
-      }, function(error) {
+      }, function (error) {
         console.error(error);
       });
   }
@@ -30,23 +30,21 @@ class FirebaseFirestoreWrapper {
   constructor() {
     this.firestore = firebase.firestore()
   }
+  
+  async createProspect(name, email, phone, id) {
+    await this.firestore.doc(`prospect/${id}`).set({
+      name: name,
+      email: email,
+      phone: phone
+    });
+  }
 
-  // async createUser(userID, role, email, name) {
-  //   return await this.firestore.doc(`users/${userID}`).set({
-  //     email: email,
-  //     displayName: name,
-  //     photoURL: '../images/avatar.png',
-  //     createdAt: new Date(),
-  //     role: role
-  //   });
-  // }
-
-  // async getUserById(id) {
-  //   const doc = await this.firestore.collection('users').doc(id).get();
-  //   const user = doc.data();
-  //   user['id'] = id;
-  //   return user;
-  // }
+  async getProspectById(id) {
+    const doc = await this.firestore.collection('prospect').doc(id).get();
+    const prospect = doc.data();
+    prospect['id'] = id;
+    return prospect;
+  }
 }
 
 class FirebaseWrapper {
