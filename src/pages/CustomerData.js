@@ -1,10 +1,11 @@
 import React from 'react';
 import firebase from '../FirebaseWrapper';
-import Input from '../components/Input'
-import Button from '../components/Button'
+import Input from '../components/Input';
+import AlertDismissible from '../components/AlertDismissible';
 import validateMail from '../utils/emailValidation';
 import validatePhone from '../utils/phoneValidation';
 import v4 from 'uuid/v4';
+import { Row, Col, Button } from 'react-bootstrap';
 
 class CustomerData extends React.Component {
   constructor(props) {
@@ -13,47 +14,51 @@ class CustomerData extends React.Component {
       name: '',
       email: '',
       phone: '',
-      errorName: '',
-      errorEmail: '',
-      errorPhone: '',
-      alert: null
+      alert: null,
+      errors: {}
     };
   }
 
-  handleChange = (event, element) => {
+  handleChange(event, element) {
     const newState = this.state;
-    newState[element] = event.target.value
+    newState[element] = event.target.value;
     this.setState(newState);
   }
 
-  validateData = () => {
-    const { name, email, phone, errorName, errorEmail, errorPhone } = this.state;
+  validateData() {
+    const { name, email, phone } = this.state;
+    let errors = {};
 
-    // if (name === '') {
-    //   this.setState({ errorName: 'Name inválido' });
-    // } else {
-    //   this.setState({ errorName: '' });
-    // }
+    let nameIsValid = true;
+    let emailIsValid = true;
+    let phoneIsValid = true;
 
-    // if (!validateMail(email)) {
-    //   this.setState({ errorEmail: 'Email inválido' });
-    // } else {
-    //   this.setState({ errorEmail: '' });
-    // }
-
-    // if (!validatePhone(phone)) {
-    //   this.setState({ errorPhone: 'Telefone inválido' });
-    // } else {
-    //   this.setState({ errorPhone: '' });
-    // }
-
-    // if (errorName === '' && errorEmail === '' && errorPhone === '') {
-
-    try {
-      firebase.firestore.createProspect(name, email, phone, v4());
-      this.toast('success', 'Criado com sucesso');
+    if (!name) {
+      nameIsValid = false;
+      errors['name'] = 'O campo nome é obrigatório';
     }
-    catch (error) { this.toast('success', 'Criado com sucesso') };
+
+    if (!validateMail(email)) {
+      emailIsValid = false;
+      errors['email'] = 'O campo email é obrigatório';
+    }
+
+    if (!validatePhone(phone)) {
+      phoneIsValid = false;
+      errors['phone'] = 'O campo telefone é obrigatório';
+    }
+
+    const valid = nameIsValid && emailIsValid && phoneIsValid;
+    this.setState({ errors });
+
+    if (valid) {
+      try {
+        firebase.firestore.createProspect(name, email, phone, v4());
+        this.props.history.push('confirmation.js');
+      } catch (error) { 
+        this.toast('danger', 'Erro ao criar o cadastro');
+      }
+    }
   }
 
   toast(variant, text) {
@@ -66,21 +71,24 @@ class CustomerData extends React.Component {
   render() {
     return (
       <section>
+        <Row>
+          <Col sm='12' md='12' lg='12'>
+            {this.state.alert && <AlertDismissible variant={this.state.alert.variant} text={this.state.alert.text}></AlertDismissible>}
+          </Col>
+        </Row>
         <h2>Seu CPF é: {sessionStorage.getItem('cpf')}</h2>
         <h3>Vamos iniciar seu cadastro!</h3>
         <form>
-          <p>{this.state.errorName}</p>
-          <Input type='text' text='Nome completo' onChange={(e) => this.handleChange(e, 'name')}></Input>
-          <p>{this.state.errorEmail}</p>
-          <Input type='email' text='exemplo@exemplo.com' value={this.state.email}
-            onChange={(e) => this.handleChange(e, 'email')}></Input>
-          <p>{this.state.errorPhone}</p>
-          <Input type='number' text='(xx) xxxxxxxx' value={this.state.phone}
-            onChange={(e) => this.handleChange(e, 'phone')}></Input>
-          <Button onClick={this.validateData} >Cadastrar</Button>
+          {this.state.errors.name && <p>{this.state.errors.name}</p>}
+          <Input type='text' text='Nome completo' onChange={(event) => this.handleChange(event, 'name')} />
+          {this.state.errors.email && <p>{this.state.errors.email}</p>}
+          <Input type='email' text='exemplo@exemplo.com' onChange={(event) => this.handleChange(event, 'email')} />
+          {this.state.errors.phone && <p>{this.state.errors.phone}</p>}
+          <Input type='number' text='(xx) xxxxxxxx' onChange={(event) => this.handleChange(event, 'phone')} />
+          <Button onClick={this.validateData}>Cadastrar</Button>
         </form>
       </section>
-    )
+    );
   }
 }
 
