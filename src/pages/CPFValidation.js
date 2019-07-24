@@ -1,7 +1,6 @@
 import React from 'react';
 import Input from '../components/Input'
 import Button from '../components/Button'
-// import '.css'
 
 const isValid = require('gtech-cpf-validator');
 
@@ -14,7 +13,6 @@ class CPFValidation extends React.Component {
     };
   }
   
-
   handleChange = (event, element) => {
     const newState = this.state;
     newState[element] = event.target.value

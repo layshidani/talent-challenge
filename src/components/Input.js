@@ -1,18 +1,17 @@
 import React from 'react';
-import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
 
-function Input(props){ 
+function Input(props) {
+  const inputStyle = {
+    fontSize: '30px',
+    width: '100%',
+    margin: '15px 0px',
+    padding: '20px',
+    border: '1px solid silver',
+    borderRadius: '10px'
+  }
+
   return (
-    <InputGroup className="mb-3">
-    <FormControl 
-      placeholder={props.text}     
-    />
-       {/* <InputGroup.Append>
-      <InputGroup.Text id="basic-addon2"></InputGroup.Text>
-    </InputGroup.Append> */}
-  </InputGroup>
-    // <input style={inputStyle} type={props.type} placeholder={props.text} onChange={props.onChange} value={props.value} />
+    <input style={inputStyle} type={props.type} placeholder={props.text} onChange={props.onChange} value={props.value} />
   );
 }
 
