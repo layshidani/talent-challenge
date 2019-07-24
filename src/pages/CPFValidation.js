@@ -33,8 +33,6 @@ class CPFValidation extends React.Component {
   }
   
   render() {
-  const cpfStored = sessionStorage.getItem('cpf');
-    console.log(cpfStored)
     return (
       <section>
         <p>{this.state.errorMsg}</p>
