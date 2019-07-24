@@ -31,11 +31,13 @@ class FirebaseFirestoreWrapper {
     this.firestore = firebase.firestore()
   }
   
-  async createProspect(name, email, phone, id) {
+  async createProspect(cpf, name, email, phone, id) {
     await this.firestore.doc(`prospect/${id}`).set({
+      cpf:cpf,
       name: name,
       email: email,
-      phone: phone
+      phone: phone,
+      status: 'pendente'
     });
   }
 
@@ -44,6 +46,17 @@ class FirebaseFirestoreWrapper {
     const prospect = doc.data();
     prospect['id'] = id;
     return prospect;
+  }
+
+  async getProspectByStatus(status) {
+    const dbProspect = await this.firestore.collection('prospect').where('status', '==', status).get();
+    const prospects = [];
+    dbProspect.forEach((child) =>{
+      let prospect = child.data();
+      prospect['id'] = child.id;
+      prospects.push(prospect);
+    });
+    return prospects;
   }
 }
 

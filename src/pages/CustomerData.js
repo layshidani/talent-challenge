@@ -27,6 +27,7 @@ class CustomerData extends React.Component {
 
   validateData = () => {
     const { name, email, phone } = this.state;
+    const cpf = sessionStorage.getItem('cpf');  
     let errors = {};
 
     let nameIsValid = true;
@@ -45,7 +46,7 @@ class CustomerData extends React.Component {
 
     if (!validatePhone(phone)) {
       phoneIsValid = false;
-      errors['phone'] = 'O campo telefone é obrigatório';
+      errors['phone'] = 'Preencha o campo corretamente';
     }
 
     const valid = nameIsValid && emailIsValid && phoneIsValid;
@@ -53,7 +54,8 @@ class CustomerData extends React.Component {
 
     if (valid) {
       try {
-        firebase.firestore.createProspect(name, email, phone, v4());
+        firebase.firestore.createProspect(cpf, name, email, phone, v4());
+        sessionStorage.clear();
         this.props.history.push('confirmation.js');
       } catch (error) { 
         this.toast('danger', 'Erro ao criar o cadastro');
@@ -68,6 +70,7 @@ class CustomerData extends React.Component {
     }, 3000);
   }
 
+  
   render() {
     return (
       <section>
