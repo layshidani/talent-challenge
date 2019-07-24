@@ -46,13 +46,19 @@ class Home extends Component {
     return (
       <section className='home'>
         <div className='form'>
-          <h2>Entrar</h2>
+          <h2>Abra sua conta</h2>
           <p>{this.state.errorMsg}</p>
+          <input value={this.state.email} type='email'
+            placeholder='Nome Completo'
+            onChange={(e) => this.handleChange(e, 'email')} />
           <input value={this.state.email} type='email'
             placeholder='Email'
             onChange={(e) => this.handleChange(e, 'email')} />
+          <input value={this.state.email} type='email'
+            placeholder='Telefone'
+            onChange={(e) => this.handleChange(e, 'email')} />
           <input value={this.state.password} type='password'
-            placeholder='Senha'
+            placeholder='CPF'
             onChange={(e) => this.handleChange(e, 'password')} />
           <ButtonLogin text='Entrar' className='btn' onClick={this.signIn} />
           <Link className='link' to='/signUp'>Fazer Login</Link>

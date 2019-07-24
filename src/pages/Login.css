@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans');
+html {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.App-header {
+  background: url(../images/Woman.jpg) no-repeat bottom center scroll;
+  background-position: 30% 45%;
+  background-size: cover;
+}
+
+.home {
+  background-color:#E7E7E7;
+  padding: 20px;
+  width: 70vw;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.link {
+  color: aliceblue;
+  font-size: 0.8em;
+}

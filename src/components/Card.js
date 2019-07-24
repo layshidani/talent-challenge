@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 
-function Card() {
+function clientCard() {
 
   return (
     <Card border="primary" style={{ width: '18rem' }}>
@@ -17,4 +17,4 @@ function Card() {
   )
 };
 
-export default Card;
+export default clientCard;
