@@ -25,8 +25,10 @@ class CPFValidation extends React.Component {
     const valid = { 
       cpf1 : isValid.cpfValidator(cpfString)
     } 
+
     if(valid.cpf1) {
-      sessionStorage.setItem('cpf', cpfString);
+      const CPFOnlyNumbers = cpfString.match(/\d/g).join('');
+      sessionStorage.setItem('cpf', CPFOnlyNumbers);
       this.setState({errorMsg: ''})
       this.props.history.push(`/customer-data`)
     } else {

@@ -31,11 +31,12 @@ class FirebaseFirestoreWrapper {
     this.firestore = firebase.firestore()
   }
   
-  async createProspect(name, email, phone, id) {
+  async createProspect(name, email, phone, cpf, id) {
     await this.firestore.doc(`prospect/${id}`).set({
-      name: name,
-      email: email,
-      phone: phone
+      name,
+      email,
+      phone,
+      cpf
     });
   }
 
