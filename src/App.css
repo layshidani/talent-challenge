@@ -9,7 +9,9 @@
 }
 
 .App-header {
-  background-color: #E7E7E7;
+  background: url('/images/background-login.jpg') no-repeat bottom center scroll;
+  background-size: cover;
+  background-position: 30% 45%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -30,4 +32,23 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+h2, p{
+  font-size: 0.7em;
+  color: #282c34;
+}
+
+.error{
+  color: #ff8914;
+}
+
+.color-form{
+  background-color: #e7e7e7;
+  padding: 30px 10px;
+  border-radius: 5px;
+};
+
+.logo{
+  margin: 10px
 }

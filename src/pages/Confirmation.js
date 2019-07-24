@@ -1,19 +1,13 @@
 import React from 'react';
 
-class Confirmation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  render() {
+function Confirmation() {
     return (
       <section>
-        <h1>#Confirmation</h1>
+        <img ClassName="logo" src='../images/logo.png' />
+        <h1>Seu cadastro foi enviado com sucesso!</h1>
+        <p>Por gentileza, aguarde nosso contato com a confirmação da abertura de sua conta.</p>
       </section>
     )
-  }
 }
 
 export default Confirmation;

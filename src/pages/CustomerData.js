@@ -1,11 +1,13 @@
 import React from 'react';
 import firebase from '../FirebaseWrapper';
 import Input from '../components/Input';
+import Button from '../components/Button';
 import AlertDismissible from '../components/AlertDismissible';
 import validateMail from '../utils/emailValidation';
 import validatePhone from '../utils/phoneValidation';
 import v4 from 'uuid/v4';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
+import '../App.css';
 
 class CustomerData extends React.Component {
   constructor(props) {
@@ -36,12 +38,12 @@ class CustomerData extends React.Component {
 
     if (!name) {
       nameIsValid = false;
-      errors['name'] = 'O campo nome é obrigatório';
+      errors['name'] = 'Preencha o nome corretamente';
     }
 
     if (!validateMail(email)) {
       emailIsValid = false;
-      errors['email'] = 'O campo email é obrigatório';
+      errors['email'] = 'Preencha o e-mail corretamente';
     }
 
     if (!validatePhone(phone)) {
@@ -56,7 +58,7 @@ class CustomerData extends React.Component {
       try {
         firebase.firestore.createProspect(cpf, name, email, phone, v4());
         sessionStorage.clear();
-        this.props.history.push('confirmation.js');
+        this.props.history.push('confirmation');
       } catch (error) { 
         this.toast('danger', 'Erro ao criar o cadastro');
       }
@@ -79,16 +81,16 @@ class CustomerData extends React.Component {
             {this.state.alert && <AlertDismissible variant={this.state.alert.variant} text={this.state.alert.text}></AlertDismissible>}
           </Col>
         </Row>
-        <h2>Seu CPF é: {sessionStorage.getItem('cpf')}</h2>
-        <h3>Vamos iniciar seu cadastro!</h3>
+        <h2>Vamos iniciar seu cadastro!</h2>
+        <p>Seu CPF é: {sessionStorage.getItem('cpf')}</p>
         <form>
-          {this.state.errors.name && <p>{this.state.errors.name}</p>}
+          {this.state.errors.name && <p className='error'>{this.state.errors.name}</p>}
           <Input type='text' text='Nome completo' onChange={(event) => this.handleChange(event, 'name')} />
-          {this.state.errors.email && <p>{this.state.errors.email}</p>}
+          {this.state.errors.email && <p className='error'>{this.state.errors.email}</p>}
           <Input type='email' text='exemplo@exemplo.com' onChange={(event) => this.handleChange(event, 'email')} />
-          {this.state.errors.phone && <p>{this.state.errors.phone}</p>}
+          {this.state.errors.phone && <p className='error'>{this.state.errors.phone}</p>}
           <Input type='text' text='(xx) xxxxxxxx' onChange={(event) => this.handleChange(event, 'phone')} />
-          <Button onClick={this.validateData}>Cadastrar</Button>
+          <Button onClick={this.validateData} text='Cadastrar'></Button>
         </form>
       </section>
     );
