@@ -25,7 +25,7 @@ class CustomerData extends React.Component {
     this.setState(newState);
   }
 
-  validateData() {
+  validateData = () => {
     const { name, email, phone } = this.state;
     let errors = {};
 
