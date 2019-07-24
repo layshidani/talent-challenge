@@ -25,7 +25,7 @@ class CustomerData extends React.Component {
     this.setState(newState);
   }
 
-  validateData() {
+  validateData = () => {
     const { name, email, phone } = this.state;
     let errors = {};
 
@@ -84,7 +84,7 @@ class CustomerData extends React.Component {
           {this.state.errors.email && <p>{this.state.errors.email}</p>}
           <Input type='email' text='exemplo@exemplo.com' onChange={(event) => this.handleChange(event, 'email')} />
           {this.state.errors.phone && <p>{this.state.errors.phone}</p>}
-          <Input type='number' text='(xx) xxxxxxxx' onChange={(event) => this.handleChange(event, 'phone')} />
+          <Input type='text' text='(xx) xxxxxxxx' onChange={(event) => this.handleChange(event, 'phone')} />
           <Button onClick={this.validateData}>Cadastrar</Button>
         </form>
       </section>
