@@ -4,7 +4,7 @@ import Input from '../components/Input'
 import Button from '../components/Button'
 import validateMail from '../utils/emailValidation';
 import validatePhone from '../utils/phoneValidation';
-
+import v4 from 'uuid/v4';
 
 class CustomerData extends React.Component {
   constructor(props) {
@@ -15,7 +15,8 @@ class CustomerData extends React.Component {
       phone: '',
       errorName: '',
       errorEmail: '',
-      errorPhone: ''
+      errorPhone: '',
+      alert: null
     };
   }
 
@@ -27,31 +28,39 @@ class CustomerData extends React.Component {
 
   validateData = () => {
     const { name, email, phone, errorName, errorEmail, errorPhone } = this.state;
-    console.log(email, phone)
 
-    if (name === '') {
-      this.setState({ errorName: 'Name inválido' });
-    } else {
-      this.setState({ errorName: '' });
-    }
+    // if (name === '') {
+    //   this.setState({ errorName: 'Name inválido' });
+    // } else {
+    //   this.setState({ errorName: '' });
+    // }
 
-    if (!validateMail(email)) {
-      this.setState({ errorEmail: 'Email inválido' });
-    } else {
-      this.setState({ errorEmail: '' });
-    }
+    // if (!validateMail(email)) {
+    //   this.setState({ errorEmail: 'Email inválido' });
+    // } else {
+    //   this.setState({ errorEmail: '' });
+    // }
 
-    if (!validatePhone(phone)) {
-      this.setState({ errorPhone: 'Telefone inválido' });
-    } else {
-      this.setState({ errorPhone: '' });
-    }
+    // if (!validatePhone(phone)) {
+    //   this.setState({ errorPhone: 'Telefone inválido' });
+    // } else {
+    //   this.setState({ errorPhone: '' });
+    // }
 
     // if (errorName === '' && errorEmail === '' && errorPhone === '') {
 
-    //   firebase.firestore.createUser(name, email, phone)
-    //   alert('Usuário enviado!')
-    // }
+    try {
+      firebase.firestore.createProspect(name, email, phone, v4());
+      this.toast('success', 'Criado com sucesso');
+    }
+    catch (error) { this.toast('success', 'Criado com sucesso') };
+  }
+
+  toast(variant, text) {
+    this.setState({ alert: { variant, text } });
+    setTimeout(() => {
+      this.setState({ alert: null });
+    }, 3000);
   }
 
   render() {
