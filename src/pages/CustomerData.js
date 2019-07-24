@@ -51,9 +51,11 @@ class CustomerData extends React.Component {
     const valid = nameIsValid && emailIsValid && phoneIsValid;
     this.setState({ errors });
 
+    const cpfStoraged = sessionStorage.getItem('cpf');
+
     if (valid) {
       try {
-        firebase.firestore.createProspect(name, email, phone, v4());
+        firebase.firestore.createProspect(name, email, phone, cpfStoraged, v4());
         this.props.history.push('confirmation.js');
       } catch (error) { 
         this.toast('danger', 'Erro ao criar o cadastro');
