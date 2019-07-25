@@ -71,3 +71,14 @@ Para construção da aplicação foram utilizadas as seguintes tecnologias:
 * Filtros de busca de solicitações (status)
 * Campo de busca de solicitações por dado (CPF, nome)
 * Cancelar solicitação
+
+## Equipe
+
+![Equipe](imgs/equipe.png)
+
+* [Ana Cláudia Camargo](https://github.com/anacamargo)
+* [Camila Bastos](https://github.com/camebastos)
+* [Fabiane Albuquerque](https://github.com/faalbuquerque)
+* [Jéssica Ferreira](https://github.com/jayferreira)
+* [Lays Hidani](https://github.com/layshidani)
+* [Tatiane Tabata](https://github.com/TatianeTabata)
