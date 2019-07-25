@@ -52,7 +52,7 @@ Para construção da aplicação foram utilizadas as seguintes tecnologias:
     
     **Dados para acesso:**
     * email: admin@mail.com
-    * senha: 
+    * senha: 102030
 * Banco de dados coletados do cliente (firebase) completo
 * Tela de listagem (parcialmente implementada) - [acessar](https://talent-db-7fa1c.firebaseapp.com/admin-dashboard)
 
